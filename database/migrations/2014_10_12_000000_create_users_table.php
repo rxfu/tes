@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('telephone', 20)->nullable()->comment('联系电话');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->comment('用户表');
         });
     }
 

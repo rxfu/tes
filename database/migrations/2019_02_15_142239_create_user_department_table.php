@@ -18,7 +18,8 @@ class CreateUserDepartmentTable extends Migration
             $table->string('department_id', 2)->index()->comment('单位ID');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('department_id')->references('dw')->on('t_xt_departments')->onDelete('cascade')->onUpdate('cascade');
+            
+            $table->comment('用户部门分配表');
         });
     }
 

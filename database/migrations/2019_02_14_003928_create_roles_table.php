@@ -18,6 +18,8 @@ class CreateRolesTable extends Migration
             $table->string('slug', 20)->comment('角色标识');
             $table->string('name', 50)->comment('角色名称');
             $table->timestamps();
+
+            $table->comment('角色表');
         });
     }
 

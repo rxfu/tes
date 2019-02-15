@@ -16,10 +16,13 @@ class CreateLogsTable extends Migration
         Schema::create('logs', function (Blueprint $table) {
             $table->increments('id')->comment('日志ID');
             $table->unsignedInteger('user_id')->index()->comment('用户ID');
-            $table->string('level')->comment('日志级别');
+            $table->string('operator')->comment('操作方式');
+            $table->text('content')->comment('操作记录');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->comment('日志表');
         });
     }
 
