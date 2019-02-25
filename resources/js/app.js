@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 
+window.Polyfill = require('babel-polyfill');
 window.Vue = require('vue');
 
 /**
@@ -16,6 +17,10 @@ window.Vue = require('vue');
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
+
+import VueRouter from 'vue-router';
+import routes from './routes';
+import App from './components/App.vue';
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
@@ -28,6 +33,14 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const router = new VueRouter({
+	base: config.base,
+	mode: history,
+	routers
+});
+
 const app = new Vue({
     el: '#app'
+    router,
+    render: h => h(App)
 });

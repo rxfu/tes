@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.25 on 2019-02-16 01:41:36.
+ * Generated for Laravel 5.7.27 on 2019-02-25 01:45:56.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -34,7 +34,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Run the given array of bootstrap classes.
          *
-         * @param array $bootstrappers
+         * @param string[] $bootstrappers
          * @return void 
          * @static 
          */ 
@@ -508,7 +508,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Register a new boot listener.
          *
-         * @param mixed $callback
+         * @param callable $callback
          * @return void 
          * @static 
          */ 
@@ -520,7 +520,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Register a new "booted" listener.
          *
-         * @param mixed $callback
+         * @param callable $callback
          * @return void 
          * @static 
          */ 
@@ -1475,6 +1475,21 @@ namespace Illuminate\Support\Facades {
     /**
      * 
      *
+     * @method static bool check()
+     * @method static bool guest()
+     * @method static \Illuminate\Contracts\Auth\Authenticatable|null user()
+     * @method static int|null id()
+     * @method static bool validate(array $credentials = [])
+     * @method static void setUser(\Illuminate\Contracts\Auth\Authenticatable $user)
+     * @method static bool attempt(array $credentials = [], bool $remember = false)
+     * @method static bool once(array $credentials = [])
+     * @method static void login(\Illuminate\Contracts\Auth\Authenticatable $user, bool $remember = false)
+     * @method static \Illuminate\Contracts\Auth\Authenticatable loginUsingId(mixed $id, bool $remember = false)
+     * @method static bool onceUsingId(mixed $id)
+     * @method static bool viaRemember()
+     * @method static void logout()
+     * @method static \Symfony\Component\HttpFoundation\Response|null onceBasic(string $field = 'email',array $extraConditions = [])
+     * @method static null|bool logoutOtherDevices(string $password, string $attribute = 'password')
      * @see \Illuminate\Auth\AuthManager
      * @see \Illuminate\Contracts\Auth\Factory
      * @see \Illuminate\Contracts\Auth\Guard
@@ -1639,421 +1654,6 @@ namespace Illuminate\Support\Facades {
         public static function getDefaultUserProvider()
         {
             return \Illuminate\Auth\AuthManager::getDefaultUserProvider();
-        }
-        
-        /**
-         * Get the currently authenticated user.
-         *
-         * @return \App\User|null 
-         * @static 
-         */ 
-        public static function user()
-        {
-            return \Illuminate\Auth\SessionGuard::user();
-        }
-        
-        /**
-         * Get the ID for the currently authenticated user.
-         *
-         * @return int|null 
-         * @static 
-         */ 
-        public static function id()
-        {
-            return \Illuminate\Auth\SessionGuard::id();
-        }
-        
-        /**
-         * Log a user into the application without sessions or cookies.
-         *
-         * @param array $credentials
-         * @return bool 
-         * @static 
-         */ 
-        public static function once($credentials = array())
-        {
-            return \Illuminate\Auth\SessionGuard::once($credentials);
-        }
-        
-        /**
-         * Log the given user ID into the application without sessions or cookies.
-         *
-         * @param mixed $id
-         * @return \App\User|false 
-         * @static 
-         */ 
-        public static function onceUsingId($id)
-        {
-            return \Illuminate\Auth\SessionGuard::onceUsingId($id);
-        }
-        
-        /**
-         * Validate a user's credentials.
-         *
-         * @param array $credentials
-         * @return bool 
-         * @static 
-         */ 
-        public static function validate($credentials = array())
-        {
-            return \Illuminate\Auth\SessionGuard::validate($credentials);
-        }
-        
-        /**
-         * Attempt to authenticate using HTTP Basic Auth.
-         *
-         * @param string $field
-         * @param array $extraConditions
-         * @return \Symfony\Component\HttpFoundation\Response|null 
-         * @static 
-         */ 
-        public static function basic($field = 'email', $extraConditions = array())
-        {
-            return \Illuminate\Auth\SessionGuard::basic($field, $extraConditions);
-        }
-        
-        /**
-         * Perform a stateless HTTP Basic login attempt.
-         *
-         * @param string $field
-         * @param array $extraConditions
-         * @return \Symfony\Component\HttpFoundation\Response|null 
-         * @static 
-         */ 
-        public static function onceBasic($field = 'email', $extraConditions = array())
-        {
-            return \Illuminate\Auth\SessionGuard::onceBasic($field, $extraConditions);
-        }
-        
-        /**
-         * Attempt to authenticate a user using the given credentials.
-         *
-         * @param array $credentials
-         * @param bool $remember
-         * @return bool 
-         * @static 
-         */ 
-        public static function attempt($credentials = array(), $remember = false)
-        {
-            return \Illuminate\Auth\SessionGuard::attempt($credentials, $remember);
-        }
-        
-        /**
-         * Log the given user ID into the application.
-         *
-         * @param mixed $id
-         * @param bool $remember
-         * @return \App\User|false 
-         * @static 
-         */ 
-        public static function loginUsingId($id, $remember = false)
-        {
-            return \Illuminate\Auth\SessionGuard::loginUsingId($id, $remember);
-        }
-        
-        /**
-         * Log a user into the application.
-         *
-         * @param \Illuminate\Contracts\Auth\Authenticatable $user
-         * @param bool $remember
-         * @return void 
-         * @static 
-         */ 
-        public static function login($user, $remember = false)
-        {
-            \Illuminate\Auth\SessionGuard::login($user, $remember);
-        }
-        
-        /**
-         * Log the user out of the application.
-         *
-         * @return void 
-         * @static 
-         */ 
-        public static function logout()
-        {
-            \Illuminate\Auth\SessionGuard::logout();
-        }
-        
-        /**
-         * Invalidate other sessions for the current user.
-         * 
-         * The application must be using the AuthenticateSession middleware.
-         *
-         * @param string $password
-         * @param string $attribute
-         * @return bool|null 
-         * @static 
-         */ 
-        public static function logoutOtherDevices($password, $attribute = 'password')
-        {
-            return \Illuminate\Auth\SessionGuard::logoutOtherDevices($password, $attribute);
-        }
-        
-        /**
-         * Register an authentication attempt event listener.
-         *
-         * @param mixed $callback
-         * @return void 
-         * @static 
-         */ 
-        public static function attempting($callback)
-        {
-            \Illuminate\Auth\SessionGuard::attempting($callback);
-        }
-        
-        /**
-         * Get the last user we attempted to authenticate.
-         *
-         * @return \App\User 
-         * @static 
-         */ 
-        public static function getLastAttempted()
-        {
-            return \Illuminate\Auth\SessionGuard::getLastAttempted();
-        }
-        
-        /**
-         * Get a unique identifier for the auth session value.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getName()
-        {
-            return \Illuminate\Auth\SessionGuard::getName();
-        }
-        
-        /**
-         * Get the name of the cookie used to store the "recaller".
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getRecallerName()
-        {
-            return \Illuminate\Auth\SessionGuard::getRecallerName();
-        }
-        
-        /**
-         * Determine if the user was authenticated via "remember me" cookie.
-         *
-         * @return bool 
-         * @static 
-         */ 
-        public static function viaRemember()
-        {
-            return \Illuminate\Auth\SessionGuard::viaRemember();
-        }
-        
-        /**
-         * Get the cookie creator instance used by the guard.
-         *
-         * @return \Illuminate\Contracts\Cookie\QueueingFactory 
-         * @throws \RuntimeException
-         * @static 
-         */ 
-        public static function getCookieJar()
-        {
-            return \Illuminate\Auth\SessionGuard::getCookieJar();
-        }
-        
-        /**
-         * Set the cookie creator instance used by the guard.
-         *
-         * @param \Illuminate\Contracts\Cookie\QueueingFactory $cookie
-         * @return void 
-         * @static 
-         */ 
-        public static function setCookieJar($cookie)
-        {
-            \Illuminate\Auth\SessionGuard::setCookieJar($cookie);
-        }
-        
-        /**
-         * Get the event dispatcher instance.
-         *
-         * @return \Illuminate\Contracts\Events\Dispatcher 
-         * @static 
-         */ 
-        public static function getDispatcher()
-        {
-            return \Illuminate\Auth\SessionGuard::getDispatcher();
-        }
-        
-        /**
-         * Set the event dispatcher instance.
-         *
-         * @param \Illuminate\Contracts\Events\Dispatcher $events
-         * @return void 
-         * @static 
-         */ 
-        public static function setDispatcher($events)
-        {
-            \Illuminate\Auth\SessionGuard::setDispatcher($events);
-        }
-        
-        /**
-         * Get the session store used by the guard.
-         *
-         * @return \Illuminate\Contracts\Session\Session 
-         * @static 
-         */ 
-        public static function getSession()
-        {
-            return \Illuminate\Auth\SessionGuard::getSession();
-        }
-        
-        /**
-         * Return the currently cached user.
-         *
-         * @return \App\User|null 
-         * @static 
-         */ 
-        public static function getUser()
-        {
-            return \Illuminate\Auth\SessionGuard::getUser();
-        }
-        
-        /**
-         * Set the current user.
-         *
-         * @param \Illuminate\Contracts\Auth\Authenticatable $user
-         * @return $this 
-         * @static 
-         */ 
-        public static function setUser($user)
-        {
-            return \Illuminate\Auth\SessionGuard::setUser($user);
-        }
-        
-        /**
-         * Get the current request instance.
-         *
-         * @return \Symfony\Component\HttpFoundation\Request 
-         * @static 
-         */ 
-        public static function getRequest()
-        {
-            return \Illuminate\Auth\SessionGuard::getRequest();
-        }
-        
-        /**
-         * Set the current request instance.
-         *
-         * @param \Symfony\Component\HttpFoundation\Request $request
-         * @return $this 
-         * @static 
-         */ 
-        public static function setRequest($request)
-        {
-            return \Illuminate\Auth\SessionGuard::setRequest($request);
-        }
-        
-        /**
-         * Determine if current user is authenticated. If not, throw an exception.
-         *
-         * @return \App\User 
-         * @throws \Illuminate\Auth\AuthenticationException
-         * @static 
-         */ 
-        public static function authenticate()
-        {
-            return \Illuminate\Auth\SessionGuard::authenticate();
-        }
-        
-        /**
-         * Determine if the guard has a user instance.
-         *
-         * @return bool 
-         * @static 
-         */ 
-        public static function hasUser()
-        {
-            return \Illuminate\Auth\SessionGuard::hasUser();
-        }
-        
-        /**
-         * Determine if the current user is authenticated.
-         *
-         * @return bool 
-         * @static 
-         */ 
-        public static function check()
-        {
-            return \Illuminate\Auth\SessionGuard::check();
-        }
-        
-        /**
-         * Determine if the current user is a guest.
-         *
-         * @return bool 
-         * @static 
-         */ 
-        public static function guest()
-        {
-            return \Illuminate\Auth\SessionGuard::guest();
-        }
-        
-        /**
-         * Get the user provider used by the guard.
-         *
-         * @return \Illuminate\Contracts\Auth\UserProvider 
-         * @static 
-         */ 
-        public static function getProvider()
-        {
-            return \Illuminate\Auth\SessionGuard::getProvider();
-        }
-        
-        /**
-         * Set the user provider used by the guard.
-         *
-         * @param \Illuminate\Contracts\Auth\UserProvider $provider
-         * @return void 
-         * @static 
-         */ 
-        public static function setProvider($provider)
-        {
-            \Illuminate\Auth\SessionGuard::setProvider($provider);
-        }
-        
-        /**
-         * Register a custom macro.
-         *
-         * @param string $name
-         * @param object|callable $macro
-         * @return void 
-         * @static 
-         */ 
-        public static function macro($name, $macro)
-        {
-            \Illuminate\Auth\SessionGuard::macro($name, $macro);
-        }
-        
-        /**
-         * Mix another object into the class.
-         *
-         * @param object $mixin
-         * @return void 
-         * @throws \ReflectionException
-         * @static 
-         */ 
-        public static function mixin($mixin)
-        {
-            \Illuminate\Auth\SessionGuard::mixin($mixin);
-        }
-        
-        /**
-         * Checks if macro is registered.
-         *
-         * @param string $name
-         * @return bool 
-         * @static 
-         */ 
-        public static function hasMacro($name)
-        {
-            return \Illuminate\Auth\SessionGuard::hasMacro($name);
         }
          
     }
@@ -3452,103 +3052,6 @@ namespace Illuminate\Support\Facades {
         public static function hasMacro($name)
         {
             return \Illuminate\Cookie\CookieJar::hasMacro($name);
-        }
-         
-    }
-
-    /**
-     * 
-     *
-     * @see \Illuminate\Encryption\Encrypter
-     */ 
-    class Crypt {
-        
-        /**
-         * Determine if the given key and cipher combination is valid.
-         *
-         * @param string $key
-         * @param string $cipher
-         * @return bool 
-         * @static 
-         */ 
-        public static function supported($key, $cipher)
-        {
-            return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
-        }
-        
-        /**
-         * Create a new encryption key for the given cipher.
-         *
-         * @param string $cipher
-         * @return string 
-         * @static 
-         */ 
-        public static function generateKey($cipher)
-        {
-            return \Illuminate\Encryption\Encrypter::generateKey($cipher);
-        }
-        
-        /**
-         * Encrypt the given value.
-         *
-         * @param mixed $value
-         * @param bool $serialize
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\EncryptException
-         * @static 
-         */ 
-        public static function encrypt($value, $serialize = true)
-        {
-            return \Illuminate\Encryption\Encrypter::encrypt($value, $serialize);
-        }
-        
-        /**
-         * Encrypt a string without serialization.
-         *
-         * @param string $value
-         * @return string 
-         * @static 
-         */ 
-        public static function encryptString($value)
-        {
-            return \Illuminate\Encryption\Encrypter::encryptString($value);
-        }
-        
-        /**
-         * Decrypt the given value.
-         *
-         * @param mixed $payload
-         * @param bool $unserialize
-         * @return mixed 
-         * @throws \Illuminate\Contracts\Encryption\DecryptException
-         * @static 
-         */ 
-        public static function decrypt($payload, $unserialize = true)
-        {
-            return \Illuminate\Encryption\Encrypter::decrypt($payload, $unserialize);
-        }
-        
-        /**
-         * Decrypt the given string without unserialization.
-         *
-         * @param string $payload
-         * @return string 
-         * @static 
-         */ 
-        public static function decryptString($payload)
-        {
-            return \Illuminate\Encryption\Encrypter::decryptString($payload);
-        }
-        
-        /**
-         * Get the encryption key.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getKey()
-        {
-            return \Illuminate\Encryption\Encrypter::getKey();
         }
          
     }
@@ -6236,7 +5739,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Send a new message when only a raw text part.
+         * Send a new message with only a raw text part.
          *
          * @param string $text
          * @param mixed $callback
@@ -6249,7 +5752,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Send a new message when only a plain part.
+         * Send a new message with only a plain part.
          *
          * @param string $view
          * @param array $data
@@ -7310,223 +6813,67 @@ namespace Illuminate\Support\Facades {
     /**
      * 
      *
-     * @see \Illuminate\Routing\Redirector
+     * @see \Illuminate\Redis\RedisManager
+     * @see \Illuminate\Contracts\Redis\Factory
      */ 
-    class Redirect {
+    class Redis {
         
         /**
-         * Create a new redirect response to the "home" route.
+         * Get a Redis connection by name.
          *
-         * @param int $status
-         * @return \Illuminate\Http\RedirectResponse 
+         * @param string|null $name
+         * @return \Illuminate\Redis\Connections\Connection 
          * @static 
          */ 
-        public static function home($status = 302)
+        public static function connection($name = null)
         {
-            return \Illuminate\Routing\Redirector::home($status);
+            return \Illuminate\Redis\RedisManager::connection($name);
         }
         
         /**
-         * Create a new redirect response to the previous location.
+         * Resolve the given connection by name.
          *
-         * @param int $status
-         * @param array $headers
-         * @param mixed $fallback
-         * @return \Illuminate\Http\RedirectResponse 
+         * @param string|null $name
+         * @return \Illuminate\Redis\Connections\Connection 
+         * @throws \InvalidArgumentException
          * @static 
          */ 
-        public static function back($status = 302, $headers = array(), $fallback = false)
+        public static function resolve($name = null)
         {
-            return \Illuminate\Routing\Redirector::back($status, $headers, $fallback);
+            return \Illuminate\Redis\RedisManager::resolve($name);
         }
         
         /**
-         * Create a new redirect response to the current URI.
+         * Return all of the created connections.
          *
-         * @param int $status
-         * @param array $headers
-         * @return \Illuminate\Http\RedirectResponse 
+         * @return array 
          * @static 
          */ 
-        public static function refresh($status = 302, $headers = array())
+        public static function connections()
         {
-            return \Illuminate\Routing\Redirector::refresh($status, $headers);
+            return \Illuminate\Redis\RedisManager::connections();
         }
         
         /**
-         * Create a new redirect response, while putting the current URL in the session.
+         * Enable the firing of Redis command events.
          *
-         * @param string $path
-         * @param int $status
-         * @param array $headers
-         * @param bool $secure
-         * @return \Illuminate\Http\RedirectResponse 
-         * @static 
-         */ 
-        public static function guest($path, $status = 302, $headers = array(), $secure = null)
-        {
-            return \Illuminate\Routing\Redirector::guest($path, $status, $headers, $secure);
-        }
-        
-        /**
-         * Create a new redirect response to the previously intended location.
-         *
-         * @param string $default
-         * @param int $status
-         * @param array $headers
-         * @param bool $secure
-         * @return \Illuminate\Http\RedirectResponse 
-         * @static 
-         */ 
-        public static function intended($default = '/', $status = 302, $headers = array(), $secure = null)
-        {
-            return \Illuminate\Routing\Redirector::intended($default, $status, $headers, $secure);
-        }
-        
-        /**
-         * Set the intended url.
-         *
-         * @param string $url
          * @return void 
          * @static 
          */ 
-        public static function setIntendedUrl($url)
+        public static function enableEvents()
         {
-            \Illuminate\Routing\Redirector::setIntendedUrl($url);
+            \Illuminate\Redis\RedisManager::enableEvents();
         }
         
         /**
-         * Create a new redirect response to the given path.
+         * Disable the firing of Redis command events.
          *
-         * @param string $path
-         * @param int $status
-         * @param array $headers
-         * @param bool $secure
-         * @return \Illuminate\Http\RedirectResponse 
-         * @static 
-         */ 
-        public static function to($path, $status = 302, $headers = array(), $secure = null)
-        {
-            return \Illuminate\Routing\Redirector::to($path, $status, $headers, $secure);
-        }
-        
-        /**
-         * Create a new redirect response to an external URL (no validation).
-         *
-         * @param string $path
-         * @param int $status
-         * @param array $headers
-         * @return \Illuminate\Http\RedirectResponse 
-         * @static 
-         */ 
-        public static function away($path, $status = 302, $headers = array())
-        {
-            return \Illuminate\Routing\Redirector::away($path, $status, $headers);
-        }
-        
-        /**
-         * Create a new redirect response to the given HTTPS path.
-         *
-         * @param string $path
-         * @param int $status
-         * @param array $headers
-         * @return \Illuminate\Http\RedirectResponse 
-         * @static 
-         */ 
-        public static function secure($path, $status = 302, $headers = array())
-        {
-            return \Illuminate\Routing\Redirector::secure($path, $status, $headers);
-        }
-        
-        /**
-         * Create a new redirect response to a named route.
-         *
-         * @param string $route
-         * @param mixed $parameters
-         * @param int $status
-         * @param array $headers
-         * @return \Illuminate\Http\RedirectResponse 
-         * @static 
-         */ 
-        public static function route($route, $parameters = array(), $status = 302, $headers = array())
-        {
-            return \Illuminate\Routing\Redirector::route($route, $parameters, $status, $headers);
-        }
-        
-        /**
-         * Create a new redirect response to a controller action.
-         *
-         * @param string|array $action
-         * @param mixed $parameters
-         * @param int $status
-         * @param array $headers
-         * @return \Illuminate\Http\RedirectResponse 
-         * @static 
-         */ 
-        public static function action($action, $parameters = array(), $status = 302, $headers = array())
-        {
-            return \Illuminate\Routing\Redirector::action($action, $parameters, $status, $headers);
-        }
-        
-        /**
-         * Get the URL generator instance.
-         *
-         * @return \Illuminate\Routing\UrlGenerator 
-         * @static 
-         */ 
-        public static function getUrlGenerator()
-        {
-            return \Illuminate\Routing\Redirector::getUrlGenerator();
-        }
-        
-        /**
-         * Set the active session store.
-         *
-         * @param \Illuminate\Session\Store $session
          * @return void 
          * @static 
          */ 
-        public static function setSession($session)
+        public static function disableEvents()
         {
-            \Illuminate\Routing\Redirector::setSession($session);
-        }
-        
-        /**
-         * Register a custom macro.
-         *
-         * @param string $name
-         * @param object|callable $macro
-         * @return void 
-         * @static 
-         */ 
-        public static function macro($name, $macro)
-        {
-            \Illuminate\Routing\Redirector::macro($name, $macro);
-        }
-        
-        /**
-         * Mix another object into the class.
-         *
-         * @param object $mixin
-         * @return void 
-         * @throws \ReflectionException
-         * @static 
-         */ 
-        public static function mixin($mixin)
-        {
-            \Illuminate\Routing\Redirector::mixin($mixin);
-        }
-        
-        /**
-         * Checks if macro is registered.
-         *
-         * @param string $name
-         * @return bool 
-         * @static 
-         */ 
-        public static function hasMacro($name)
-        {
-            return \Illuminate\Routing\Redirector::hasMacro($name);
+            \Illuminate\Redis\RedisManager::disableEvents();
         }
          
     }
@@ -9499,258 +8846,6 @@ namespace Illuminate\Support\Facades {
         public static function hasValidSignature($absolute = true)
         {
             return \Illuminate\Http\Request::hasValidSignature($absolute);
-        }
-         
-    }
-
-    /**
-     * 
-     *
-     * @see \Illuminate\Contracts\Routing\ResponseFactory
-     */ 
-    class Response {
-        
-        /**
-         * Create a new response instance.
-         *
-         * @param string $content
-         * @param int $status
-         * @param array $headers
-         * @return \Illuminate\Http\Response 
-         * @static 
-         */ 
-        public static function make($content = '', $status = 200, $headers = array())
-        {
-            return \Illuminate\Routing\ResponseFactory::make($content, $status, $headers);
-        }
-        
-        /**
-         * Create a new "no content" response.
-         *
-         * @param int $status
-         * @param array $headers
-         * @return \Illuminate\Http\Response 
-         * @static 
-         */ 
-        public static function noContent($status = 204, $headers = array())
-        {
-            return \Illuminate\Routing\ResponseFactory::noContent($status, $headers);
-        }
-        
-        /**
-         * Create a new response for a given view.
-         *
-         * @param string $view
-         * @param array $data
-         * @param int $status
-         * @param array $headers
-         * @return \Illuminate\Http\Response 
-         * @static 
-         */ 
-        public static function view($view, $data = array(), $status = 200, $headers = array())
-        {
-            return \Illuminate\Routing\ResponseFactory::view($view, $data, $status, $headers);
-        }
-        
-        /**
-         * Create a new JSON response instance.
-         *
-         * @param mixed $data
-         * @param int $status
-         * @param array $headers
-         * @param int $options
-         * @return \Illuminate\Http\JsonResponse 
-         * @static 
-         */ 
-        public static function json($data = array(), $status = 200, $headers = array(), $options = 0)
-        {
-            return \Illuminate\Routing\ResponseFactory::json($data, $status, $headers, $options);
-        }
-        
-        /**
-         * Create a new JSONP response instance.
-         *
-         * @param string $callback
-         * @param mixed $data
-         * @param int $status
-         * @param array $headers
-         * @param int $options
-         * @return \Illuminate\Http\JsonResponse 
-         * @static 
-         */ 
-        public static function jsonp($callback, $data = array(), $status = 200, $headers = array(), $options = 0)
-        {
-            return \Illuminate\Routing\ResponseFactory::jsonp($callback, $data, $status, $headers, $options);
-        }
-        
-        /**
-         * Create a new streamed response instance.
-         *
-         * @param \Closure $callback
-         * @param int $status
-         * @param array $headers
-         * @return \Symfony\Component\HttpFoundation\StreamedResponse 
-         * @static 
-         */ 
-        public static function stream($callback, $status = 200, $headers = array())
-        {
-            return \Illuminate\Routing\ResponseFactory::stream($callback, $status, $headers);
-        }
-        
-        /**
-         * Create a new streamed response instance as a file download.
-         *
-         * @param \Closure $callback
-         * @param string|null $name
-         * @param array $headers
-         * @param string|null $disposition
-         * @return \Symfony\Component\HttpFoundation\StreamedResponse 
-         * @static 
-         */ 
-        public static function streamDownload($callback, $name = null, $headers = array(), $disposition = 'attachment')
-        {
-            return \Illuminate\Routing\ResponseFactory::streamDownload($callback, $name, $headers, $disposition);
-        }
-        
-        /**
-         * Create a new file download response.
-         *
-         * @param \SplFileInfo|string $file
-         * @param string|null $name
-         * @param array $headers
-         * @param string|null $disposition
-         * @return \Symfony\Component\HttpFoundation\BinaryFileResponse 
-         * @static 
-         */ 
-        public static function download($file, $name = null, $headers = array(), $disposition = 'attachment')
-        {
-            return \Illuminate\Routing\ResponseFactory::download($file, $name, $headers, $disposition);
-        }
-        
-        /**
-         * Return the raw contents of a binary file.
-         *
-         * @param \SplFileInfo|string $file
-         * @param array $headers
-         * @return \Symfony\Component\HttpFoundation\BinaryFileResponse 
-         * @static 
-         */ 
-        public static function file($file, $headers = array())
-        {
-            return \Illuminate\Routing\ResponseFactory::file($file, $headers);
-        }
-        
-        /**
-         * Create a new redirect response to the given path.
-         *
-         * @param string $path
-         * @param int $status
-         * @param array $headers
-         * @param bool|null $secure
-         * @return \Illuminate\Http\RedirectResponse 
-         * @static 
-         */ 
-        public static function redirectTo($path, $status = 302, $headers = array(), $secure = null)
-        {
-            return \Illuminate\Routing\ResponseFactory::redirectTo($path, $status, $headers, $secure);
-        }
-        
-        /**
-         * Create a new redirect response to a named route.
-         *
-         * @param string $route
-         * @param array $parameters
-         * @param int $status
-         * @param array $headers
-         * @return \Illuminate\Http\RedirectResponse 
-         * @static 
-         */ 
-        public static function redirectToRoute($route, $parameters = array(), $status = 302, $headers = array())
-        {
-            return \Illuminate\Routing\ResponseFactory::redirectToRoute($route, $parameters, $status, $headers);
-        }
-        
-        /**
-         * Create a new redirect response to a controller action.
-         *
-         * @param string $action
-         * @param array $parameters
-         * @param int $status
-         * @param array $headers
-         * @return \Illuminate\Http\RedirectResponse 
-         * @static 
-         */ 
-        public static function redirectToAction($action, $parameters = array(), $status = 302, $headers = array())
-        {
-            return \Illuminate\Routing\ResponseFactory::redirectToAction($action, $parameters, $status, $headers);
-        }
-        
-        /**
-         * Create a new redirect response, while putting the current URL in the session.
-         *
-         * @param string $path
-         * @param int $status
-         * @param array $headers
-         * @param bool|null $secure
-         * @return \Illuminate\Http\RedirectResponse 
-         * @static 
-         */ 
-        public static function redirectGuest($path, $status = 302, $headers = array(), $secure = null)
-        {
-            return \Illuminate\Routing\ResponseFactory::redirectGuest($path, $status, $headers, $secure);
-        }
-        
-        /**
-         * Create a new redirect response to the previously intended location.
-         *
-         * @param string $default
-         * @param int $status
-         * @param array $headers
-         * @param bool|null $secure
-         * @return \Illuminate\Http\RedirectResponse 
-         * @static 
-         */ 
-        public static function redirectToIntended($default = '/', $status = 302, $headers = array(), $secure = null)
-        {
-            return \Illuminate\Routing\ResponseFactory::redirectToIntended($default, $status, $headers, $secure);
-        }
-        
-        /**
-         * Register a custom macro.
-         *
-         * @param string $name
-         * @param object|callable $macro
-         * @return void 
-         * @static 
-         */ 
-        public static function macro($name, $macro)
-        {
-            \Illuminate\Routing\ResponseFactory::macro($name, $macro);
-        }
-        
-        /**
-         * Mix another object into the class.
-         *
-         * @param object $mixin
-         * @return void 
-         * @throws \ReflectionException
-         * @static 
-         */ 
-        public static function mixin($mixin)
-        {
-            \Illuminate\Routing\ResponseFactory::mixin($mixin);
-        }
-        
-        /**
-         * Checks if macro is registered.
-         *
-         * @param string $name
-         * @return bool 
-         * @static 
-         */ 
-        public static function hasMacro($name)
-        {
-            return \Illuminate\Routing\ResponseFactory::hasMacro($name);
         }
          
     }
@@ -13985,8 +13080,6 @@ namespace  {
 
     class Cookie extends \Illuminate\Support\Facades\Cookie {}
 
-    class Crypt extends \Illuminate\Support\Facades\Crypt {}
-
     class DB extends \Illuminate\Support\Facades\DB {}
 
     class Eloquent extends \Illuminate\Database\Eloquent\Model {         
@@ -16374,11 +15467,9 @@ namespace  {
 
     class Queue extends \Illuminate\Support\Facades\Queue {}
 
-    class Redirect extends \Illuminate\Support\Facades\Redirect {}
+    class Redis extends \Illuminate\Support\Facades\Redis {}
 
     class Request extends \Illuminate\Support\Facades\Request {}
-
-    class Response extends \Illuminate\Support\Facades\Response {}
 
     class Route extends \Illuminate\Support\Facades\Route {}
 
