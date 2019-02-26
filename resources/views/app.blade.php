@@ -25,6 +25,8 @@
 <body class="hold-transition sidebar-mini">
     <div id="app"></div>
 
+    @include('footer')
+    
     <!-- Scripts -->
     <script src="{{ asset(mix('js/app.js')) }}" defer></script>
     <!-- AdminLTE App -->
