@@ -22,10 +22,12 @@
     <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
     @stack('styles')
 </head>
-<body class="hold-transition sidebar-mini">
-    <div id="app"></div>
+<body class="hold-transition @yield('body-class')">
+    @include('shared.header')
 
-    @include('footer')
+    @include('shared.sidebar')
+
+    @include('shared.footer')
     
     <!-- Scripts -->
     <script src="{{ asset(mix('js/app.js')) }}" defer></script>
