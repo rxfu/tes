@@ -1,44 +1,39 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.default')
 
-    <meta name="keywords" content="{{ config('setting.keywords') }}">
-    <meta name="description" content="{{ config('setting.description') }}">
-    <meta name="author" content="{{ config('setting.author') }}">
+@section('body-class', 'sidebar-mini')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }} | {{ $title ?? 'Default' }}</title>
-
-    <!-- Styles -->
-    <!-- Font Awesome Icons -->
-    <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-    <!-- Theme style -->
-    <link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @stack('styles')
-</head>
-<body class="hold-transition @yield('body-class')">
+@section('page')
+	
     @include('shared.header')
 
     @include('shared.sidebar')
 
-    @yield('content')
+    <!-- Content wrapper -->
+    <div class="content-wrapper">
+    	<!-- Content header -->
+    	<div class="content-header">
+    		<div class="container-fluid">
+    			<div class="row mb-2">
+    				<div class="col-sm-6">
+    					<h1 class="m-0 text-dark">{{ $title ?? '默认页面'}}</h1>
+    				</div>
+    				<div class="col-sm-6">
+    					@include('shared.breadcrumb')
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+
+	    <!-- Main content -->
+	    <div class="content">
+	    	<div class="content-fluid">
+	    		@yield('content')
+	    	</div>
+	    </div>
+    </div>
 
     @include('shared.footer')
-    
-    <!-- jQuery -->
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('js/adminlte.min.js') }}"></script>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    @stack('scripts')
-</body>
-</html>
+
+    @include('shared.control')
+
+@endsection

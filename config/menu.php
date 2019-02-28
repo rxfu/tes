@@ -1,42 +1,44 @@
 <?php
 
 return [
-	[
-		'title' => 'Dashboard',
-		'icon' => 'dashboard',
-		'children' => [
-			[
-				'title' => 'Dashboard v1',
-				'action' => '#',
-				'icon' => 'circle-o'
-			],
-			[
-				'title' => 'Dashboard v2',
-				'action' => '#',
-				'icon' => 'circle-o'
-			],
-			[
-				'title' => 'Dashboard v3',
-				'action' => '#',
-				'icon' => 'circle-o'
+	'navigation' => [
+		[
+			'title' => '首页',
+			'url' => '/'
+		],
+		[
+			'title' => '联系我们',
+		]
+	],
+	'sidebar' => [
+		[
+			'title' => 'Dashboard',
+			'icon' => 'dashboard',
+			'children' => [
+				[
+					'title' => 'Dashboard v1',
+				],
+				[
+					'title' => 'Dashboard v2',
+				],
+				[
+					'title' => 'Dashboard v3',
+				],
 			],
 		],
-	],
-	'系统管理',
-	[
-		'title' => '用户管理',
-		'action' => 'user.list',
-		'icon' => 'user'
-	],
-	'账户设置',
-	[
-		'title' => '基本信息',
-		'action' => 'user.profile',
-		'icon' => 'user'
-	],
-	[
-		'title' => '修改密码',
-		'action' => 'user.password',
-		'icon' => 'lock'
+		'系统管理',
+		[
+			'title' => '用户管理',
+			'icon' => 'users'
+		],
+		'账户设置',
+		[
+			'title' => '基本信息',
+			'icon' => 'user'
+		],
+		[
+			'title' => '修改密码',
+			'icon' => 'lock'
+		]
 	]
 ];
