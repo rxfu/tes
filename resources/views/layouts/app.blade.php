@@ -16,10 +16,10 @@
 
     <!-- Styles -->
     <!-- Font Awesome Icons -->
-    <link href="{{ asset(mix('plugins/font-awesome/css/font-awesome.min.css')) }}" rel="stylesheet">
+    <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Theme style -->
-    <link href="{{ asset(mix('css/adminlte.min.css')) }}" rel="stylesheet">
-    <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
+    <link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('styles')
 </head>
 <body class="hold-transition @yield('body-class')">
@@ -27,12 +27,14 @@
 
     @include('shared.sidebar')
 
+    @yield('content')
+
     @include('shared.footer')
     
     <!-- Scripts -->
-    <script src="{{ asset(mix('js/app.js')) }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset(mix('js/adminlte.min.js')) }}"></script>
+    <script src="{{ asset('js/adminlte.min.js') }}"></script>
     @stack('scripts')
 </body>
 </html>

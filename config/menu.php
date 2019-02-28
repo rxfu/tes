@@ -1,6 +1,28 @@
 <?php
 
 return [
+	'EXMPLE',
+	[
+		'title' => 'Dashboard',
+		'icon' => 'dashboard',
+		'children' => [
+			[
+				'title' => 'Dashboard v1',
+				'action' => '#',
+				'icon' => 'circle-o'
+			],
+			[
+				'title' => 'Dashboard v2',
+				'action' => '#',
+				'icon' => 'circle-o'
+			],
+			[
+				'title' => 'Dashboard v3',
+				'action' => '#',
+				'icon' => 'circle-o'
+			],
+		]		
+	],
 	'系统管理',
 	[
 		'title' => '用户管理',
