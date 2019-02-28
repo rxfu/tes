@@ -1,7 +1,6 @@
 <?php
 
 return [
-	'EXMPLE',
 	[
 		'title' => 'Dashboard',
 		'icon' => 'dashboard',
@@ -21,7 +20,7 @@ return [
 				'action' => '#',
 				'icon' => 'circle-o'
 			],
-		]		
+		],
 	],
 	'系统管理',
 	[

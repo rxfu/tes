@@ -23,8 +23,46 @@
               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             	<!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
               @foreach (config('menu') as $item)
-                {{-- expr --}}
+                  @if (is_array($item))
+                      @isset($item['children'])
+                      <li class="nav-item has-treeview">
+                          <a href="{{ $item['action'] ?? '#' }}" class="nav-link">
+                              @isset ($item['icon'])
+                                  <i class="nav-icon fa fa-{{ $item['icon'] }}"></i>
+                              @endisset
+                              <p>
+                                  {{ $item['title'] ?? '无标题' }}
+                                  <i class="right fa fa-angle-left"></i>
+                              </p>
+                          </a>
+                          <ul class="nav nav-treeview">
+                              @foreach ($item['children'] as $subitem)
+                                  <li class="nav-item"><a href="{{ $subitem['action'] ?? '#' }}" class="nav-link">
+                                      @isset ($subitem['icon'])                                          
+                                          <i class="nav-icon fa fa-{{ $subitem['icon'] }}"></i>
+                                      @else
+                                          <i class="nav-icon fa fa-circle-o"></i>
+                                      @endisset
+                                      <p>{{ $subitem['title'] ?? '无标题' }}</p>
+                                    </a></li>
+                              @endforeach
+                          </ul>
+                      </li>
+                      @else
+                          <li class="nav-item">
+                              <a href="{{ $item['action'] ?? '#' }}" class="nav-link">
+                                  @isset ($item['icon'])
+                                      <i class="nav-icon fa fa-{{ $item['icon'] }}"></i>
+                                  @endisset
+                                  <p>{{ $item['title'] ?? '无标题' }}</p>
+                              </a>
+                          </li>
+                      @endisset
+                  @else
+                      <li class="nav-header">{{ $item }}</li>
+                  @endif
               @endforeach
+              <!--
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fa fa-dashboard"></i>
@@ -57,6 +95,7 @@
                 </p>
               </a>
             </li>
+          -->
           </ul>
         </nav>
   	</div>

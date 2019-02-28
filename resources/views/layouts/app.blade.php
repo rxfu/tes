@@ -31,10 +31,14 @@
 
     @include('shared.footer')
     
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- jQuery -->
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('js/adminlte.min.js') }}"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
     @stack('scripts')
 </body>
 </html>

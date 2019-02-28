@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use JavaScript;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,9 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        JavaScript::put([
-            'config' => config('setting')
-        ]);
+        //
     }
 
     /**
