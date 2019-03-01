@@ -15,18 +15,29 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">登录系统</p>
 
-            <form action="#" method="post">
-                <div class="input-group mb-3">
+            <form action="{{ route('login') }}" method="post">
+                @csrf
+                <div class="input-group mb-3{{ $errors->has('username') ? ' is_invalid' : '' }}">
                     <input type="username" class="form-control" placeholder="用户名">
                     <div class="input-group-append">
                         <span class="fa fa-user input-group-text"></span>
                     </div>
+                    @if ($errors->has('username'))
+                        <div class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('username') }}</strong>
+                        </div>
+                    @endif
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group mb-3{{ $errors->has('password') ? ' is_invalid' : '' }}">
                     <input type="password" class="form-control" placeholder="密码">
                     <div class="input-group-append">
                         <span class="fa fa-lock input-group-text"></span>
                     </div>
+                    @if ($errors->has('password'))
+                        <div class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </div>
+                    @endif
                 </div>
                 <div class="row">
                     <div class="col-8">
@@ -43,6 +54,10 @@
                 </div>
             </form>
         </div>
+
+        <div class="card-footer">
+            <a href="{{ route('login') }}" title="后台登录">管理平台</a>
+        </div>
     </div>
 </div>
 @endsection
@@ -50,6 +65,11 @@
 @push('styles')
 <!-- iCheck -->
 <link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}">
+<style>
+    .login-logo {
+        font-size: 28px;
+    }
+</style>
 @endpush
 
 @push('scripts')

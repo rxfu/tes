@@ -12,19 +12,9 @@ return [
 	],
 	'sidebar' => [
 		[
-			'title' => 'Dashboard',
+			'title' => '使用说明',
 			'icon' => 'dashboard',
-			'children' => [
-				[
-					'title' => 'Dashboard v1',
-				],
-				[
-					'title' => 'Dashboard v2',
-				],
-				[
-					'title' => 'Dashboard v3',
-				],
-			],
+			'url' => '/'
 		],
 		'系统管理',
 		[
