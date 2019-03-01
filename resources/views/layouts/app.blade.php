@@ -11,7 +11,7 @@
     <!-- Content wrapper -->
     <div class="content-wrapper">
     	<!-- Content header -->
-    	<div class="content-header">
+    	<section class="content-header">
     		<div class="container-fluid">
     			<div class="row mb-2">
     				<div class="col-sm-6">
@@ -22,14 +22,14 @@
     				</div>
     			</div>
     		</div>
-    	</div>
+    	</section>
 
 	    <!-- Main content -->
-	    <div class="content">
+	    <section class="content">
 	    	<div class="content-fluid">
 	    		@yield('content')
 	    	</div>
-	    </div>
+	    </section>
     </div>
 
     @include('shared.footer')
