@@ -17,8 +17,8 @@
 
             <form action="{{ route('login') }}" method="post">
                 @csrf
-                <div class="input-group mb-3{{ $errors->has('username') ? ' is_invalid' : '' }}">
-                    <input type="username" class="form-control" placeholder="用户名">
+                <div class="input-group mb-3">
+                    <input type="text" id="username" name="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="用户名" required>
                     <div class="input-group-append">
                         <span class="fa fa-user input-group-text"></span>
                     </div>
@@ -28,8 +28,8 @@
                         </div>
                     @endif
                 </div>
-                <div class="input-group mb-3{{ $errors->has('password') ? ' is_invalid' : '' }}">
-                    <input type="password" class="form-control" placeholder="密码">
+                <div class="input-group mb-3">
+                    <input type="password" id="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="密码" required>
                     <div class="input-group-append">
                         <span class="fa fa-lock input-group-text"></span>
                     </div>
