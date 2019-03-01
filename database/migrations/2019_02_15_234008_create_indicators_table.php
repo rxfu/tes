@@ -21,8 +21,6 @@ class CreateIndicatorsTable extends Migration
             $table->integer('order')->default(0)->comment('排序');
             $table->unsignedInteger('parent')->nullable()->comment('父指标ID');
             $table->timestamps();
-
-            $table->comment('指标表');
         });
     }
 

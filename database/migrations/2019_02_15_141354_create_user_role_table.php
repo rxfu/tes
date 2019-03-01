@@ -19,8 +19,6 @@ class CreateUserRoleTable extends Migration
             
             $table->foreign('user_id')->references('id')->on('users')->OnDelete('cascade')->onUpdate('cascade');
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->comment('用户角色分配表');
         });
     }
 

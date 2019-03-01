@@ -8,7 +8,7 @@ return [
 			'type' => 'text',
 			'required' => 'required',
 			'focus' => 'focus',
-		]
+		],
 		[
 			'field' => 'password',
 			'name' => '密码',

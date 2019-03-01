@@ -18,8 +18,6 @@ class CreateGradesTable extends Migration
             $table->string('name', 50)->comment('等级名称');
             $table->decimal('lowest', 5, 2)->comment('最低分');
             $table->decimal('highest', 5, 2)->comment('最搞分');
-
-            $table->comment('分数等级表')
         });
     }
 

@@ -21,8 +21,6 @@ class CreateCommentsTable extends Migration
             $table->string('course', 12)->comment('课程序号，12位');
             $table->text('content')->comment('评语');
             $table->timestamps();
-
-            $table->comment('评语表');
         });
     }
 

@@ -21,8 +21,6 @@ class CreateScoresTable extends Migration
             $table->string('course', 12)->comment('课程序号，12位');
             $table->unsignedDecimal('score', 5, 2)->default(0)->comment('评分');
             $table->timestamps();
-
-            $table->comment('评分表');
         });
     }
 
