@@ -15,7 +15,7 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">登录{{ $title ?? '' }}</p>
 
-            <form action="{{ route('admin.login') }}" method="post">
+            <form action="{{ route('student.login') }}" method="post">
                 @csrf
                 <div class="input-group mb-3">
                     <input type="text" id="username" name="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="用户名" required>
@@ -56,7 +56,7 @@
         </div>
 
         <div class="card-footer">
-            <a href="{{ route('login') }}" title="前台登录">学生平台</a>
+            <a href="{{ route('admin.login') }}" title="后台登录">管理平台</a>
         </div>
     </div>
 </div>

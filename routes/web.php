@@ -12,10 +12,19 @@
 */
 
 Route::get('/', function () {
-    return redirect('/home');
+    return redirect()->route('student.home');
 });
 
-Route::prefix('admin')->group(function() {
-	Auth::routes();
-	Route::get('/home', 'HomeController@index')->name('home');
+Route::name('admin.')->prefix('admin')->namespace('Admin')->group(function () {
+    Route::get('login', 'LoginController@showLoginForm')->name('login');
+    Route::post('login', 'LoginController@login');
+    Route::post('logout', 'LoginController@logout')->name('logout');
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
+Route::name('student.')->prefix('student')->group(function () {
+    Route::get('login', 'LoginController@showLoginForm')->name('login');
+    Route::post('login', 'LoginController@login');
+    Route::post('logout', 'LoginController@logout')->name('logout');
+    Route::get('/home', 'HomeController@index')->name('home');
 });

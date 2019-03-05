@@ -56,7 +56,7 @@
         </div>
 
         <div class="card-footer">
-            <a href="{{ route('login') }}" title="前台登录">学生平台</a>
+            <a href="{{ route('student.login') }}" title="前台登录">学生平台</a>
         </div>
     </div>
 </div>

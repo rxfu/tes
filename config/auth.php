@@ -45,6 +45,11 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
     ],
 
     /*
@@ -68,6 +73,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Entities\User::class,
+        ],
+
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Entities\Dean\Student::class,
         ],
 
         // 'users' => [

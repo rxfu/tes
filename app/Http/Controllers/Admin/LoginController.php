@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class LoginController extends AdminController
 {
     /*
     |--------------------------------------------------------------------------
@@ -56,6 +57,21 @@ class LoginController extends Controller
     {
         $title = '后台管理';
 
-        return view('auth.login', compact('title'));
+        return view('admin.login', compact('title'));
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect('/admin/home');
     }
 }
