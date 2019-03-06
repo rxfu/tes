@@ -87,4 +87,17 @@ class LoginController extends Controller
 
         return $this->loggedOut($request) ?: redirect('/student/home');
     }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request) {
+        return [
+            'xh' => $request->get($this->username()),
+            'mm' => $request->get('password'),
+        ];
+    }
 }

@@ -76,7 +76,7 @@ return [
         ],
 
         'students' => [
-            'driver' => 'eloquent',
+            'driver' => 'student',
             'model' => App\Entities\Dean\Student::class,
         ],
 
