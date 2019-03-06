@@ -16,11 +16,9 @@ class AuthStudent
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        $request->is_admin = false;
-
         if (Auth::guard($guard)->guest()) {
             if ($request->ajax() || $request->wantsJson()) {
-                return response('Unauthenticate.', 401);
+                return response('Unauthenticated.', 401);
             } else {
                 return redirect('/student/login');
             }

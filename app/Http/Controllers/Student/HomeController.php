@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
 use Illuminate\Http\Request;
 
@@ -25,6 +25,6 @@ class HomeController extends Controller
     {
         $title = '使用说明';
 
-        return view('home', compact('title'));
+        return view('student.home', compact('title'));
     }
 }

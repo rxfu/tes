@@ -22,7 +22,7 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
 });
 
-Route::name('student.')->prefix('student')->group(function () {
+Route::name('student.')->prefix('student')->namespace('Student')->group(function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');
     Route::post('logout', 'LoginController@logout')->name('logout');

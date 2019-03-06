@@ -18,7 +18,7 @@
     					<h1 class="m-0 text-dark">{{ $title ?? '默认页面'}}</h1>
     				</div>
     				<div class="col-sm-6">
-    					@include('shared.breadcrumb')
+    					{{-- @include('shared.breadcrumb') --}}
     				</div>
     			</div>
     		</div>

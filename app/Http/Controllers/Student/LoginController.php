@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -81,7 +81,9 @@ class LoginController extends Controller
     {
         $this->guard()->logout();
 
-        $request->session()->invalidate();
+        $request->session()->forget($this->guard()->getName());
+
+        $request->session()->regenerate();
 
         return $this->loggedOut($request) ?: redirect('/student/home');
     }

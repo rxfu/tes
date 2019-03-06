@@ -26,6 +26,6 @@ class HomeController extends AdminController
     {
         $title = '使用说明';
 
-        return view('home', compact('title'));
+        return view('admin.home', compact('title'));
     }
 }

@@ -70,7 +70,9 @@ class LoginController extends AdminController
     {
         $this->guard()->logout();
 
-        $request->session()->invalidate();
+        $request->session()->forget($this->guard()->getName());
+
+        $request->session()->regenerate();
 
         return $this->loggedOut($request) ?: redirect('/admin/home');
     }

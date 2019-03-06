@@ -12,7 +12,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} | {{ $title ?? '默认页面' }}</title>
+    <title>{{ $title ?? '默认页面' }} | {{ config('setting.name', 'Laravel') }}</title>
 
     <!-- Styles -->
     <!-- Font Awesome Icons -->
