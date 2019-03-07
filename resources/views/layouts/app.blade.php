@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('title', $title)
+
 @section('body-class', 'sidebar-mini')
 
 @section('page')

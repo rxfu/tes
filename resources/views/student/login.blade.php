@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('title', '登录')
+
 @section('body-class', 'login-page')
 
 @section('page')
@@ -13,7 +15,7 @@
     <!-- Login card -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">登录{{ $title ?? '' }}</p>
+            <p class="login-box-msg">登录学生平台</p>
 
             <form action="{{ route('student.login') }}" method="post">
                 @csrf

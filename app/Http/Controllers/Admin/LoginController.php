@@ -55,7 +55,7 @@ class LoginController extends AdminController
      */
     public function showLoginForm()
     {
-        return view('admin.login', compact('title'));
+        return view('admin.login');
     }
 
     /**
