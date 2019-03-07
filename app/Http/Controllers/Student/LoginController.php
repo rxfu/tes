@@ -56,8 +56,6 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        $title = '学生平台';
-
         return view('student.login', compact('title'));
     }
 

@@ -55,8 +55,6 @@ class LoginController extends AdminController
      */
     public function showLoginForm()
     {
-        $title = '后台管理';
-
         return view('admin.login', compact('title'));
     }
 
