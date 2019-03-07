@@ -7,7 +7,6 @@ use Illuminate\View\View;
 
 class UserComposer
 {
-
     /**
      * Bind data to the view.
      *
@@ -18,6 +17,7 @@ class UserComposer
     {
         $sessionGuard = explode('_', Auth::guard()->getName());
         $guard = $sessionGuard[1];
+
         $name = ('student' === $guard) ? Auth::user()->profile->xm : Auth::user()->name;
 
         $view->with(compact('guard', 'name'));

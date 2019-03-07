@@ -27,6 +27,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         View::composers([
             'App\Http\ViewComposers\UserComposer' => ['shared.header', 'shared.sidebar'],
+            'App\Http\ViewComposers\MenuComposer' => ['layouts.default', 'layouts.app'],
         ]);
     }
 }

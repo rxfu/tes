@@ -85,7 +85,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return $this->loggedOut($request) ?: redirect('/student/home');
+        return $this->loggedOut($request) ?: redirect('/student');
     }
 
     /**

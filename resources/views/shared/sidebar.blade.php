@@ -22,7 +22,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           	    <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-                @foreach (config('menu.' . $guard . '.sidebar') as $item)
+                @foreach (config('menu.sidebar.' . $guard) as $item)
                     @if (is_array($item))
                         @isset($item['children'])
                             <li class="nav-item has-treeview">

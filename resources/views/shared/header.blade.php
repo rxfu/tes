@@ -7,7 +7,7 @@
 				<i class="fa fa-bars"></i>
 			</a>
 		</li>
-		@foreach (config('menu.' . $guard . '.navigation') as $item)
+		@foreach (config('menu.navigation.' . $guard) as $item)
 			<li class="nav-item d-done d-sm-inine-block">
 				<a href="
                 @isset($item['route'])

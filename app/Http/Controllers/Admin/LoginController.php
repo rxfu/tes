@@ -74,6 +74,6 @@ class LoginController extends AdminController
 
         $request->session()->regenerate();
 
-        return $this->loggedOut($request) ?: redirect('/admin/home');
+        return $this->loggedOut($request) ?: redirect('/admin');
     }
 }
