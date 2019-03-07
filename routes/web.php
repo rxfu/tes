@@ -19,9 +19,9 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->group(function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');
 
-    Route::middleware('auth')->group(function() {
-	    Route::post('logout', 'LoginController@logout')->name('logout');
-	    Route::get('/home', 'HomeController@index')->name('home');
+    Route::middleware('auth')->group(function () {
+        Route::post('logout', 'LoginController@logout')->name('logout');
+        Route::get('/', 'HomeController@index')->name('home');
     });
 });
 
@@ -29,8 +29,8 @@ Route::name('student.')->prefix('student')->namespace('Student')->group(function
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');
 
-    Route::middleware('auth:student')->group(function() {
-	    Route::post('logout', 'LoginController@logout')->name('logout');
-	    Route::get('/home', 'HomeController@index')->name('home');
+    Route::middleware('auth:student')->group(function () {
+        Route::post('logout', 'LoginController@logout')->name('logout');
+        Route::get('/', 'HomeController@index')->name('home');
     });
 });

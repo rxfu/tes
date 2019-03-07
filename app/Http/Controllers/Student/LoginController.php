@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/student/home';
+    protected $redirectTo = '/student';
 
     /**
      * Create a new controller instance.
@@ -94,7 +94,8 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    protected function credentials(Request $request) {
+    protected function credentials(Request $request)
+    {
         return [
             'xh' => $request->get($this->username()),
             'mm' => $request->get('password'),
