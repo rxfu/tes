@@ -19,7 +19,7 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->group(function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');
 
-    Route::middleware('auth')->group(function () {
+    Route::middleware('auth:admin')->group(function () {
         Route::post('logout', 'LoginController@logout')->name('logout');
         Route::get('/', 'HomeController@index')->name('home');
     });
