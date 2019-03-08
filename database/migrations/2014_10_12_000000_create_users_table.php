@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('name', 50)->comment('真实姓名');
             $table->string('email')->unique()->nullable()->comment('Email');
             $table->string('telephone', 20)->nullable()->comment('联系电话');
+            $table->boolean('is_enable')->default(true)->comment('是否启用');
             $table->rememberToken();
             $table->timestamps();
         });

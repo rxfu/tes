@@ -17,7 +17,7 @@ class CreateGradesTable extends Migration
             $table->increments('id')->comment('等级ID');
             $table->string('name', 50)->comment('等级名称');
             $table->decimal('lowest', 5, 2)->comment('最低分');
-            $table->decimal('highest', 5, 2)->comment('最搞分');
+            $table->decimal('highest', 5, 2)->comment('最高分');
         });
     }
 

@@ -13,7 +13,7 @@
     </div>
 
     <!-- Login card -->
-    <div class="card">
+    <div class="card card-primary card-outline">
         <div class="card-body login-card-body">
             <p class="login-box-msg">登录管理平台</p>
 

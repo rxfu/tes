@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRolesTable extends Migration
+class CreateSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->increments('id')->comment('角色ID');
-            $table->string('slug', 20)->comment('角色标识');
-            $table->string('name', 50)->comment('角色名称');
+        Schema::create('settings', function (Blueprint $table) {
+            $table->increments('id')->comment('设置ID');
+            $table->string('key', 20)->comment('设置项名');
+            $table->string('value', 128)->comment('设置项值');
         });
     }
 
@@ -27,6 +27,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('settings');
     }
 }
