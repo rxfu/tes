@@ -49,8 +49,8 @@ class Repository {
 
 	public function update($id, $data) {
 		try {
-			$object = $this->get($id);
-			$object->fill($data);
+			$this->object = $this->get($id);
+			$this->object->fill($data);
 
 			return $this->object->saveOrFail();
 		} catch (Exception $e) {
@@ -60,9 +60,9 @@ class Repository {
 
 	public function delete($id) {
 		try {
-			$object = $this->get($id);
+			$this->object = $this->get($id);
 
-			return $object->delete();
+			return $this->object->delete();
 		} catch (Exception $e) {
 			throw $e;
 		}
@@ -71,9 +71,9 @@ class Repository {
 	public function batchDelete($ids) {
 		try {
 			foreach ($ids as $id) {				
-				$object = $this->get($id);
+				$this->object = $this->get($id);
 
-				$object->delete();
+				$this->object->delete();
 			}
 		} catch (Exception $e) {
 			throw $e;
