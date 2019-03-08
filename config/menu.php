@@ -24,23 +24,30 @@ return [
     'sidebar' => [
         'admin' =>[
             'home' => [
-                'title' => '使用说明',
-                'icon' => 'dashboard',
-                'url' => '/'
+                'dashboard' => [
+                    'title' => '使用说明',
+                    'icon' => 'dashboard',
+                    'url' => '/',
+                ],
             ],
-            '系统管理',
-            [
-                'title' => '用户管理',
-                'icon' => 'users'
+            'setting' => [
+                'title' => '系统管理',
+                [
+                    'title' => '用户管理',
+                    'icon' => 'users'
+                ],
             ],
-            '账户设置',
-            [
-                'title' => '基本信息',
-                'icon' => 'user'
-            ],
-            [
-                'title' => '修改密码',
-                'icon' => 'lock'
+            'user' => [
+                'title' => '账户设置',
+                [
+                    'title' => '基本信息',
+                    'icon' => 'user'
+                ],
+                'password' => [
+                    'title' => '修改密码',
+                    'icon' => 'lock',
+                    'route' => 'admin.user.password',
+                ],
             ],
         ],
         'student' => [

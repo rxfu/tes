@@ -1,6 +1,6 @@
 <?php
 
-namespace Repositories;
+namespace App\Repositories;
 
 use Exception;
 use Illuminate\Support\Str;
@@ -11,6 +11,10 @@ class Repository {
 
 	public function __construct($object = null) {
 		$this->object = $object;
+	}
+
+	public function getObject() {
+		return $this->object;
 	}
 
 	public function getTable() {
@@ -48,7 +52,7 @@ class Repository {
 			$object = $this->get($id);
 			$object->fill($data);
 
-			return $this->object->save();
+			return $this->object->saveOrFail();
 		} catch (Exception $e) {
 			throw $e;
 		}
@@ -64,11 +68,15 @@ class Repository {
 		}
 	}
 
-	public function batchUpdate() {
-		
-	}
-
 	public function batchDelete($ids) {
+		try {
+			foreach ($ids as $id) {				
+				$object = $this->get($id);
 
+				$object->delete();
+			}
+		} catch (Exception $e) {
+			throw $e;
+		}
 	}
 }

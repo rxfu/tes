@@ -22,77 +22,79 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           	    <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-                @foreach (config('menu.sidebar.' . $guard) as $item)
-                    @if (is_array($item))
-                        @isset($item['children'])
-                            <li class="nav-item has-treeview">
-                                <a href="
-                                @isset($item['route'])
-                                    {{ route($item['route']) }}
-                                @else
-                                    @isset ($item['url'])
-                                        {{ url($item['url']) }}
+                @foreach (config('menu.sidebar.' . $guard) as $items)
+                    @foreach ($items as $item)
+                        @if (is_array($item))
+                            @isset($item['children'])
+                                <li class="nav-item has-treeview">
+                                    <a href="
+                                    @isset($item['route'])
+                                        {{ route($item['route']) }}
                                     @else
-                                        #
+                                        @isset ($item['url'])
+                                            {{ url($item['url']) }}
+                                        @else
+                                            #
+                                        @endisset
                                     @endisset
-                                @endisset
-                                " class="nav-link">
-                                    @isset ($item['icon'])
-                                        <i class="nav-icon fa fa-{{ $item['icon'] }}"></i>
+                                    " class="nav-link">
+                                        @isset ($item['icon'])
+                                            <i class="nav-icon fa fa-{{ $item['icon'] }}"></i>
+                                        @endisset
+                                        <p>
+                                            {{ $item['title'] ?? '无标题' }}
+                                            <i class="right fa fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        @foreach ($item['children'] as $subitem)
+                                            <li class="nav-item">
+                                                <a href="
+                                                @isset($subitem['route'])
+                                                    {{ route($subitem['route']) }}
+                                                @else
+                                                    @isset ($subitem['url'])
+                                                        {{ url($subitem['url']) }}
+                                                    @else
+                                                        #
+                                                    @endisset
+                                                @endisset
+                                                " class="nav-link">
+                                                    @isset ($subitem['icon'])                                          
+                                                        <i class="nav-icon fa fa-{{ $subitem['icon'] }}"></i>
+                                                    @else
+                                                        <i class="nav-icon fa fa-circle-o"></i>
+                                                    @endisset
+                                                    <p>{{ $subitem['title'] ?? '无标题' }}</p>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a href="
+                                    @isset($item['route'])
+                                        {{ route($item['route']) }}
+                                    @else
+                                        @isset ($item['url'])
+                                            {{ url($item['url']) }}
+                                        @else
+                                            #
+                                        @endisset
                                     @endisset
-                                    <p>
-                                        {{ $item['title'] ?? '无标题' }}
-                                        <i class="right fa fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    @foreach ($item['children'] as $subitem)
-                                        <li class="nav-item">
-                                            <a href="
-                                            @isset($subitem['route'])
-                                                {{ route($subitem['route']) }}
-                                            @else
-                                                @isset ($subitem['url'])
-                                                    {{ url($subitem['url']) }}
-                                                @else
-                                                    #
-                                                @endisset
-                                            @endisset
-                                            " class="nav-link">
-                                                @isset ($subitem['icon'])                                          
-                                                    <i class="nav-icon fa fa-{{ $subitem['icon'] }}"></i>
-                                                @else
-                                                    <i class="nav-icon fa fa-circle-o"></i>
-                                                @endisset
-                                                <p>{{ $subitem['title'] ?? '无标题' }}</p>
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </li>
+                                    " class="nav-link">
+                                        @isset ($item['icon'])
+                                            <i class="nav-icon fa fa-{{ $item['icon'] }}"></i>
+                                        @endisset
+                                        <p>{{ $item['title'] ?? '无标题' }}</p>
+                                    </a>
+                                </li>
+                            @endisset
                         @else
-                            <li class="nav-item">
-                                <a href="
-                                @isset($item['route'])
-                                    {{ route($item['route']) }}
-                                @else
-                                    @isset ($item['url'])
-                                        {{ url($item['url']) }}
-                                    @else
-                                        #
-                                    @endisset
-                                @endisset
-                                " class="nav-link">
-                                    @isset ($item['icon'])
-                                        <i class="nav-icon fa fa-{{ $item['icon'] }}"></i>
-                                    @endisset
-                                    <p>{{ $item['title'] ?? '无标题' }}</p>
-                                </a>
-                            </li>
-                        @endisset
-                    @else
-                        <li class="nav-header">{{ $item }}</li>
-                    @endif
+                            <li class="nav-header">{{ $item }}</li>
+                        @endif
+                    @endforeach
                 @endforeach
             </ul>
         </nav>

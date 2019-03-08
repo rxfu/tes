@@ -21,7 +21,15 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->group(function () {
 
     Route::middleware('auth:admin')->group(function () {
         Route::post('logout', 'LoginController@logout')->name('logout');
-        Route::get('/', 'HomeController@index')->name('home');
+
+        Route::name('home.')->group(function() {
+            Route::get('/', 'HomeController@dashboard')->name('dashboard');
+        });
+
+        Route::name('user.')->group(function() {
+            Route::get('password', 'UserController@password')->name('password');
+            Route::put('change-password', 'UserController@changePassword')->name('change');
+        });
     });
 });
 
