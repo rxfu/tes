@@ -7,13 +7,18 @@ use App\Exceptions\InvalidRequestException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 
-class Repository
+abstract class Repository
 {
     protected $object;
 
     public function __construct($object = null)
     {
         $this->object = $object;
+    }
+
+    public function __call($method, $parameters)
+    {
+        return $this->object->$method(...$parameters);
     }
 
     public function getTable()
@@ -28,30 +33,21 @@ class Repository
 
     public function getModel()
     {
-        return basename(str_replace('\\', '/', get_class($this->getObject())));
+        return basename(str_replace('\\', '/', get_class($this->object)));
     }
 
-    public function getObject()
-    {
-        return $this->object;
-    }
-
-    public function get($id, $trashed = false)
+    public function find($id)
     {
         try {
-            if ($trashed) {
-                return $this->object->withTrashed()->findOrFail($id);
-            }
-        
             return $this->object->findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            throw new InternalException($this->getModel() . ': ' . $id . ' 对象不存在', $this->getObject(), 'get', $e);
+            throw new InternalException($this->getModel() . ': ' . $id . ' 对象不存在', $this->object, 'find', $e);
         }
     }
 
-    public function getAll($order = 'id', $direction = 'asc')
+    public function findAll()
     {
-        return $this->object->orderBy($order, $direction)->get();
+        return $this->object->all();
     }
 
     public function store($attributes)
@@ -61,48 +57,43 @@ class Repository
             $object = $this->object->create($attributes);
     
             if (!$object) {
-                throw new InvalidRequestException($this->getModel() . ' 对象创建失败', $this->getObject(), 'store');
+                throw new InvalidRequestException($this->getModel() . ' 对象创建失败', $this->object, 'store');
             } else {
                 return $object;
             }
         } catch (QueryException $e) {
-            throw new InternalException($this->getModel() . ' 对象创建错误', $this->getObject(), 'store', $e);
+            throw new InternalException($this->getModel() . ' 对象创建错误', $this->object, 'store', $e);
         }
     }
 
     public function update($id, $attributes)
     {
-        $object = $this->get($id);
+        $object = $this->find($id);
         $attributes = is_array($attributes) ? $attributes : [$attributes];
 
         if (false === $object->update($attributes)) {
-            throw new InvalidRequestException($this->getModel() . ': ' . $id . ' 对象更新失败', $this->getObject(), 'update');
+            throw new InvalidRequestException($this->getModel() . ': ' . $id . ' 对象更新失败', $this->object, 'update');
         }
 
         return $object;
     }
 
-    public function delete($id, $force = false)
+    public function delete($id)
     {
-        $object = $this->get($id);
-        $success =  $force ? $object->forceDelete() : $object->delete();
+        $object = $this->find($id);
+        $success = $object->delete();
 
         if (is_null($success) || (false === $success)) {
-            throw new InvalidRequestException($this->getModel() . ': ' . $id . ' 对象删除失败', $this->getObject(), 'delete');
+            throw new InvalidRequestException($this->getModel() . ': ' . $id . ' 对象删除失败', $this->object, 'delete');
         }
     }
 
-    public function deleteAll($ids, $force = false)
+    public function deleteAll($ids)
     {
         $ids = is_array($ids) ? $ids : [$ids];
 
         foreach ($ids as $id) {
-            $this->delete($id, $force);
+            $this->delete($id);
         }
-    }
-
-    public function __call($method, $parameters)
-    {
-        return $this->object->$method(...$parameters);
     }
 }
