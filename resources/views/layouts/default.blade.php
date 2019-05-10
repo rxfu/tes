@@ -12,15 +12,19 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', '默认页面') | {{ config('setting.name', 'Laravel') }}</title>
+    <title>@yield('title', 'Default') | {{ config('setting.name', 'Laravel') }}</title>
 
     <!-- Styles -->
     <!-- Font Awesome Icons -->
-    <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/font-awesome/css/fontawesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/font-awesome/css/brands.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/font-awesome/css/regular.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/font-awesome/css/solid.min.css') }}" rel="stylesheet">
     <!-- Theme style -->
     <link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Custom styles -->
     @stack('styles')
 </head>
 <body class="hold-transition @yield('body-class')">
@@ -28,13 +32,14 @@
     @yield('page')
     
     <!-- jQuery -->
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('js/adminlte.min.js') }}"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Custom scripts -->
     @stack('scripts')
 </body>
 </html>
