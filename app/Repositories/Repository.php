@@ -36,9 +36,13 @@ abstract class Repository
         return basename(str_replace('\\', '/', get_class($this->object)));
     }
 
-    public function find($id)
+    public function find($id, $trashed = false)
     {
         try {
+            if ($trashed) {
+                return $this->object->withTrashed()->findOrFail($id);
+            }
+
             return $this->object->findOrFail($id);
         } catch (ModelNotFoundException $e) {
             throw new InternalException($this->getModel() . ': ' . $id . ' 对象不存在', $this->object, 'find', $e);
@@ -66,9 +70,8 @@ abstract class Repository
         }
     }
 
-    public function update($id, $attributes)
+    public function update($object, $attributes)
     {
-        $object = $this->find($id);
         $attributes = is_array($attributes) ? $attributes : [$attributes];
 
         if (false === $object->update($attributes)) {
@@ -78,22 +81,21 @@ abstract class Repository
         return $object;
     }
 
-    public function delete($id)
+    public function delete($object, $force = false)
     {
-        $object = $this->find($id);
-        $success = $object->delete();
-
-        if (is_null($success) || (false === $success)) {
-            throw new InvalidRequestException($this->getModel() . ': ' . $id . ' 对象删除失败', $this->object, 'delete');
+        try {
+            return $force ? $object->forceDelete() : $object->delete();
+        } catch (Exception $e) {
+            throw new InternalException($this->getModel() . ': ' . $id . ' 对象删除失败', $this->object, 'delete', $e);
         }
     }
 
-    public function deleteAll($ids)
+    public function deleteAll($ids, $force)
     {
         $ids = is_array($ids) ? $ids : [$ids];
 
         foreach ($ids as $id) {
-            $this->delete($id);
+            $this->delete($id, $force);
         }
     }
 }
