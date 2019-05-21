@@ -66,19 +66,23 @@ abstract class Repository
                 return $object;
             }
         } catch (QueryException $e) {
-            throw new InternalException($this->getModel() . ' 对象创建错误', $this->object, 'store', $e);
+            throw new InternalException($this->getModel() . ' 对象创建失败', $this->object, 'store', $e);
         }
     }
 
     public function update($object, $attributes)
     {
-        $attributes = is_array($attributes) ? $attributes : [$attributes];
+        try {
+            $attributes = is_array($attributes) ? $attributes : [$attributes];
 
-        if (false === $object->update($attributes)) {
-            throw new InvalidRequestException($this->getModel() . ': ' . $id . ' 对象更新失败', $this->object, 'update');
+            if (!$object->update($attributes)) {
+                throw new InvalidRequestException($this->getModel() . ' 对象更新失败', $this->object, 'update');
+            } else {
+                return $object;
+            }
+        } catch (QueryException $e) {
+            throw new InvalidRequestException($this->getModel() . ': ' . $id . ' 对象更新失败', $this->object, 'update', $e);
         }
-
-        return $object;
     }
 
     public function delete($object, $force = false)
