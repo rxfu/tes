@@ -14,7 +14,7 @@ class CreateGradesTable extends Migration
     public function up()
     {
         Schema::create('grades', function (Blueprint $table) {
-            $table->increments('id')->comment('等级ID');
+            $table->bigIncrements('id')->comment('等级ID');
             $table->string('name', 50)->comment('等级名称');
             $table->decimal('lowest', 5, 2)->comment('最低分');
             $table->decimal('highest', 5, 2)->comment('最高分');

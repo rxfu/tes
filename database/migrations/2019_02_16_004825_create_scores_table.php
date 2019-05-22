@@ -14,7 +14,7 @@ class CreateScoresTable extends Migration
     public function up()
     {
         Schema::create('scores', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('year', 4)->comment('年度');
             $table->string('term', 2)->comment('学期');
             $table->string('student', 12)->comment('学号');

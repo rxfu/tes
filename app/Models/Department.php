@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Entities;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Log extends Model
+class Department extends Model
 {
     //
 }

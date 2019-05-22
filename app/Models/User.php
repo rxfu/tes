@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entities;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -30,6 +30,6 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany('App\Entities\Role');
+        return $this->belongsToMany('App\Models\Role');
     }
 }

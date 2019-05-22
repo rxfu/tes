@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entities\Dean;
+namespace App\Models\Dean;
 
 use Illuminate\Database\Eloquent\Model as BaseModel;
 

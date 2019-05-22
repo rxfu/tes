@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entities\Dean;
+namespace App\Models\Dean;
 
-use App\Entities\Dean\Model;
+use App\Models\Dean\Model;
 
 class Profile extends Model
 {

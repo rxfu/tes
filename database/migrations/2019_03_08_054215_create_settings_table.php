@@ -14,7 +14,7 @@ class CreateSettingsTable extends Migration
     public function up()
     {
         Schema::create('settings', function (Blueprint $table) {
-            $table->increments('id')->comment('设置ID');
+            $table->bigIncrements('id')->comment('设置ID');
             $table->string('key', 20)->comment('设置项名');
             $table->string('value', 128)->comment('设置项值');
         });
@@ -22,7 +22,7 @@ class CreateSettingsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
+     *5
      * @return void
      */
     public function down()
