@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.16 on 2019-05-10 01:59:46.
+ * Generated for Laravel 5.8.18 on 2019-05-22 14:50:37.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -5923,6 +5923,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param object|string $class
          * @return mixed 
+         * @throws \Illuminate\Contracts\Container\BindingResolutionException
          * @static 
          */ 
         public static function resolvePolicy($class)
